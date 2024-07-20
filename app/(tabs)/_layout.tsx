@@ -25,7 +25,7 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="bookings"
+        name="bookingsq/home"
         options={{
           title: 'Bookings',
           tabBarIcon: ({ color, focused }) => (
