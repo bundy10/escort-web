@@ -1,70 +1,148 @@
-import { Image, StyleSheet, Platform } from 'react-native';
-
-import { HelloWave } from '@/components/HelloWave';
-import ParallaxScrollView from '@/components/ParallaxScrollView';
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
+import React from 'react';
+import { ScrollView, View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome';
+import { useNavigation } from '@react-navigation/native';
 
 export default function ProfileScreen() {
+    const navigation = useNavigation();
+   
+const handlePress = (screenName: string) => {
+    navigation.navigate(screenName as never);
+};
+
     return (
-        <ParallaxScrollView
-            headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-            headerImage={
-                <Image
-                    source={require('@/assets/images/partial-react-logo.png')}
-                    style={styles.reactLogo}
-                />
-            }>
-            <ThemedView style={styles.titleContainer}>
-                <ThemedText type="title">Welddcome!</ThemedText>
-                <HelloWave />
-            </ThemedView>
-            <ThemedView style={styles.stepContainer}>
-                <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-                <ThemedText>
-                    Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-                    Press{' '}
-                    <ThemedText type="defaultSemiBold">
-                        {Platform.select({ ios: 'cmd + d', android: 'cmd + m' })}
-                    </ThemedText>{' '}
-                    to open developer tools.
-                </ThemedText>
-            </ThemedView>
-            <ThemedView style={styles.stepContainer}>
-                <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-                <ThemedText>
-                    Tap the Explore tab to learn more about what's included in this starter app.
-                </ThemedText>
-            </ThemedView>
-            <ThemedView style={styles.stepContainer}>
-                <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-                <ThemedText>
-                    When you're ready, run{' '}
-                    <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-                    <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-                    <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-                    <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-                </ThemedText>
-            </ThemedView>
-        </ParallaxScrollView>
+        <ScrollView style={styles.container} contentContainerStyle={{ paddingTop: 60, paddingBottom: 60 }}>
+            <Text style={[styles.heading, { fontSize: 28, fontWeight: 'bold', marginBottom: 40 }]}>Profile</Text>
+
+            <TouchableOpacity style={styles.nameSection} onPress={() => handlePress('Profile')}>
+            <View style={{ marginLeft: 10, flexDirection: 'row', alignItems: 'center' }}>
+                <Icon name="user-circle" size={50} color="#000" />
+                <View style={{ flexDirection: 'column' }}>
+                    <Text style={[styles.nameText, { fontSize: 24, paddingHorizontal: 10, marginBottom: 5 }]}>Name</Text>
+                    <Text style={[styles.nameText, { fontWeight: 'normal', fontSize: 16, paddingHorizontal: 10 }]}>Show Profile</Text>
+                </View>
+            </View>
+            </TouchableOpacity>
+            <View style={[styles.separator, { marginTop: -10 }]} />
+            
+
+            <Text style={[styles.heading, { marginTop: 40 }]}>Settings</Text>
+            <TouchableOpacity style={styles.optionContainer} onPress={() => handlePress('PersonalInformation')}>
+                <Text style={styles.buttonText}>Personal Information</Text>
+                <Icon name="angle-right" size={24} color="#000" />
+            </TouchableOpacity>
+            <View style={styles.separator} />
+
+            <TouchableOpacity style={styles.optionContainer} onPress={() => handlePress('LoginSecurity')}>
+                <Text style={styles.buttonText}>Login & Security</Text>
+                <Icon name="angle-right" size={24} color="#000" />
+            </TouchableOpacity>
+            <View style={styles.separator} />
+
+            <TouchableOpacity style={styles.optionContainer} onPress={() => handlePress('PaymentsPayouts')}>
+                <Text style={styles.buttonText}>Payments & Payouts</Text>
+                <Icon name="angle-right" size={24} color="#000" />
+            </TouchableOpacity>
+            <View style={styles.separator} />
+
+            <TouchableOpacity style={styles.optionContainer} onPress={() => handlePress('Accessibility')}>
+                <Text style={styles.buttonText}>Accessibility</Text>
+                <Icon name="angle-right" size={24} color="#000" />
+            </TouchableOpacity>
+            <View style={styles.separator} />
+
+            <TouchableOpacity style={styles.optionContainer} onPress={() => handlePress('Notifications')}>
+                <Text style={styles.buttonText}>Notifications</Text>
+                <Icon name="angle-right" size={24} color="#000" />
+            </TouchableOpacity>
+            <View style={styles.separator} />
+
+            <TouchableOpacity style={styles.optionContainer} onPress={() => handlePress('PrivacySharing')}>
+                <Text style={styles.buttonText}>Privacy & Sharing</Text>
+                <Icon name="angle-right" size={24} color="#000" />
+            </TouchableOpacity>
+            <View style={styles.separator} />
+
+            <Text style={[styles.heading, { marginTop: 40 }]}>Support</Text>
+            <TouchableOpacity style={styles.optionContainer} onPress={() => handlePress('Feedback')}>
+                <Text style={styles.buttonText}>Feedback</Text>
+                <Icon name="angle-right" size={24} color="#000" />
+            </TouchableOpacity>
+            <View style={styles.separator} />
+
+            <Text style={[styles.heading, { marginTop: 40 }]}>Legal</Text>
+            <TouchableOpacity style={styles.optionContainer} onPress={() => handlePress('TermsOfService')}>
+                <Text style={styles.buttonText}>Terms of Service</Text>
+                <Icon name="angle-right" size={24} color="#000" />
+            </TouchableOpacity>
+            <View style={styles.separator} />
+            <TouchableOpacity style={styles.optionContainer} onPress={() => handlePress('PrivacyPolicy')}>
+                <Text style={styles.buttonText}>Privacy Policy</Text>
+                <Icon name="angle-right" size={24} color="#000" />
+            </TouchableOpacity>
+            <View style={styles.separator} />
+
+            <TouchableOpacity style={styles.logoutButton} onPress={() => handlePress('Logout')}>
+                <Text style={styles.logoutButtonText}>Log out</Text>
+            </TouchableOpacity>
+        </ScrollView>
     );
 }
 
 const styles = StyleSheet.create({
-    titleContainer: {
+    container: {
+        flex: 1,
+        padding: 20,
+    },
+    nameSection: {
         flexDirection: 'row',
         alignItems: 'center',
-        gap: 8,
+        marginBottom: 50,
     },
-    stepContainer: {
-        gap: 8,
-        marginBottom: 8,
+    nameText: {
+        marginLeft: 10,
+        fontSize: 18,
+        fontWeight: 'bold',
     },
-    reactLogo: {
-        height: 178,
-        width: 290,
-        bottom: 0,
-        left: 0,
-        position: 'absolute',
+    heading: {
+        fontSize: 20,
+        fontWeight: 'bold',
+        marginTop: 20,
+    },
+    buttonText: {
+        fontSize: 16,
+        marginTop: 10,
+        marginLeft: 20,
+    },
+    separator: {
+        borderBottomColor: '#E0E0E0',
+        borderBottomWidth: 1,
+        marginVertical: 8,
+    },
+    optionContainer: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        paddingVertical: 10,
+    },
+    logoutButton: {
+        backgroundColor: '#000000',
+        paddingVertical: 10,
+        paddingHorizontal: 20,
+        borderRadius: 5,
+        alignItems: 'center',
+        justifyContent: 'center',
+        elevation: 2,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+        margin: 10,
+        marginTop: 30,
+    },
+    logoutButtonText: {
+        color: '#FFFFFF',
+        fontSize: 16,
+        fontWeight: 'bold',
     },
 });
