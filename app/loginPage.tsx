@@ -5,7 +5,7 @@ export default function LoginPage() {
     const [isLoginView, setIsLoginView] = useState(true);
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const [email, setEmail] = useState(''); 
+    const [email, setEmail] = useState('');
     const opacity = useState(new Animated.Value(1))[0];
 
     useEffect(() => {
@@ -21,7 +21,7 @@ export default function LoginPage() {
     };
 
     const handleSignup = () => {
-        console.log('Sign Up with:', username, email, password); 
+        console.log('Sign Up with:', username, email, password);
     };
 
     const toggleView = () => {
@@ -30,6 +30,7 @@ export default function LoginPage() {
     };
 
     return (
+
         <Animated.View style={[styles.container, { opacity }]}>
             <Text style={styles.title}>{isLoginView ? 'Login' : 'Sign up'}</Text>
             {isLoginView ? null : (
