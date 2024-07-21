@@ -1,12 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Animated } from 'react-native';
+import { Redirect } from 'expo-router';
+import { useNavigation } from '@react-navigation/native';
+
 
 export default function LoginPage() {
     const [isLoginView, setIsLoginView] = useState(true);
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const [email, setEmail] = useState(''); 
+    const [email, setEmail] = useState('');
     const opacity = useState(new Animated.Value(1))[0];
+    const navigation = useNavigation();
 
     useEffect(() => {
         Animated.timing(opacity, {
@@ -18,10 +22,12 @@ export default function LoginPage() {
 
     const handleLogin = () => {
         console.log('Login with:', username, password);
+        // @ts-ignore
+        navigation.navigate('(tabs)', { screen: 'explore' });
     };
 
     const handleSignup = () => {
-        console.log('Sign Up with:', username, email, password); 
+        console.log('Sign Up with:', username, email, password);
     };
 
     const toggleView = () => {

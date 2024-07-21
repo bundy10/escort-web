@@ -3,6 +3,8 @@ import { ScrollView, View, TextInput, TouchableOpacity, StyleSheet, Modal } from
 import Icon from 'react-native-vector-icons/FontAwesome'; // Ensure you have this library installed
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
+import {useNavigationState} from "@react-navigation/native";
+import {useEffect} from "react";
 import { styles } from '../styles/exploreStyles';
 import ListingCard from '@/components/ListingCard';
 import { dummyListingData } from '../testData/data';
