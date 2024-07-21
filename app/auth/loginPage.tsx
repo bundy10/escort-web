@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Animated } from 'react-native';
-import { Redirect } from 'expo-router';
 import { useNavigation } from '@react-navigation/native';
 
 
