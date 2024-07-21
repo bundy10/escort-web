@@ -2,12 +2,11 @@ import React, { useState } from 'react';
 import { ScrollView, View, TextInput, TouchableOpacity, Modal, Text, Button, Image } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
 import { styles } from '../styles/exploreStyles';
 import ListingCard from '@/components/ListingCard';
 import { dummyListingData } from '../testData/data';
 
-export default function BookingsScreen() {
+export default function ExploreScreen() {
     interface Card {
         id: number;
         title: string;
