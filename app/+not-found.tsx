@@ -3,8 +3,18 @@ import { StyleSheet } from 'react-native';
 
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
+import {useNavigationState} from "@react-navigation/native";
+import {useEffect} from "react";
 
 export default function NotFoundScreen() {
+  const navigationState = useNavigationState((state) => state);
+  useEffect(() => {
+    console.log('Current navigation state: ', navigationState);
+  }, [navigationState]);
+
+  const currentRouteName = navigationState.routes[navigationState.index].name;
+  console.log('Current route name: ', currentRouteName);
+
   return (
     <>
       <Stack.Screen options={{ title: 'Oops!' }} />
