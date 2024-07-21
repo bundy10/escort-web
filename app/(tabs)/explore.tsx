@@ -4,8 +4,17 @@ import { HelloWave } from '@/components/HelloWave';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
+import {useNavigationState} from "@react-navigation/native";
+import {useEffect} from "react";
 
 export default function ExploreScreen() {
+    const navigationState = useNavigationState((state) => state);
+    useEffect(() => {
+        console.log('Current navigation state: ', navigationState);
+    }, [navigationState]);
+
+    const currentRouteName = navigationState.routes[navigationState.index].name;
+    console.log('Current route name: ', currentRouteName);
   return (
     <ParallaxScrollView
       headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}

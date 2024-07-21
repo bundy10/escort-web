@@ -5,7 +5,7 @@ import { useNavigation } from '@react-navigation/native';
 
 export default function ProfileScreen() {
     const navigation = useNavigation();
-   
+
 const handlePress = (screenName: string) => {
     navigation.navigate(screenName as never);
 };
@@ -24,7 +24,7 @@ const handlePress = (screenName: string) => {
             </View>
             </TouchableOpacity>
             <View style={[styles.separator, { marginTop: -10 }]} />
-            
+
 
             <Text style={[styles.heading, { marginTop: 40 }]}>Settings</Text>
             <TouchableOpacity style={styles.optionContainer} onPress={() => handlePress('PersonalInformation')}>
