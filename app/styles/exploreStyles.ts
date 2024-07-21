@@ -71,4 +71,30 @@ export const styles = StyleSheet.create({
         margin: 0,
         height: '100%',
     },
+    cardImage: {
+        width: '100%',
+        height: '40%',
+        resizeMode: 'cover',
+    },
+    floatBar: {
+        position: 'absolute',
+        bottom: 0,
+        left: 0,
+        right: 0,
+        backgroundColor: 'white',
+        padding: 20,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        shadowColor: '#000',
+        shadowOffset: {
+            width: 0,
+            height: -2,
+        },
+        shadowOpacity: 0.1,
+        shadowRadius: 4,
+        elevation: 5, // for Android
+        borderTopWidth: 1, // for the top border
+        borderTopColor: '#E0E0E0', // Light grey color for the separator
+    },
 });
