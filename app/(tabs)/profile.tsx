@@ -1,20 +1,16 @@
 import React from 'react';
-import { ScrollView, View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { ScrollView, View, Text, TouchableOpacity, StyleSheet, Pressable } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import { useNavigation } from '@react-navigation/native';
+import { useRouter } from 'expo-router';
 
 export default function ProfileScreen() {
-    const navigation = useNavigation();
-
-const handlePress = (screenName: string) => {
-    navigation.navigate(screenName as never);
-};
+    const router = useRouter();
 
     return (
         <ScrollView style={styles.container} contentContainerStyle={{ paddingTop: 60, paddingBottom: 60 }}>
             <Text style={[styles.heading, { fontSize: 28, fontWeight: 'bold', marginBottom: 40 }]}>Profile</Text>
 
-            <TouchableOpacity style={styles.nameSection} onPress={() => handlePress('Profile')}>
+            <TouchableOpacity style={styles.nameSection} onPress={() => router.push("")}>
             <View style={{ marginLeft: 10, flexDirection: 'row', alignItems: 'center' }}>
                 <Icon name="user-circle" size={50} color="#000" />
                 <View style={{ flexDirection: 'column' }}>
@@ -27,62 +23,63 @@ const handlePress = (screenName: string) => {
 
 
             <Text style={[styles.heading, { marginTop: 40 }]}>Settings</Text>
-            <TouchableOpacity style={styles.optionContainer} onPress={() => handlePress('PersonalInformation')}>
+            <TouchableOpacity style={styles.optionContainer} onPress={() => router.push("/userSettingPages/personalInformation")}>
                 <Text style={styles.buttonText}>Personal Information</Text>
                 <Icon name="angle-right" size={24} color="#000" />
             </TouchableOpacity>
             <View style={styles.separator} />
 
-            <TouchableOpacity style={styles.optionContainer} onPress={() => handlePress('LoginSecurity')}>
+            <TouchableOpacity style={styles.optionContainer} onPress={() => router.push("/userSettingPages/loginSecurity")}>
                 <Text style={styles.buttonText}>Login & Security</Text>
                 <Icon name="angle-right" size={24} color="#000" />
             </TouchableOpacity>
             <View style={styles.separator} />
 
-            <TouchableOpacity style={styles.optionContainer} onPress={() => handlePress('PaymentsPayouts')}>
+
+            <TouchableOpacity style={styles.optionContainer} onPress={() => router.push("/userSettingPages/paymentsPayouts")}>
                 <Text style={styles.buttonText}>Payments & Payouts</Text>
                 <Icon name="angle-right" size={24} color="#000" />
             </TouchableOpacity>
             <View style={styles.separator} />
 
-            <TouchableOpacity style={styles.optionContainer} onPress={() => handlePress('Accessibility')}>
+            <TouchableOpacity style={styles.optionContainer} onPress={() => router.push("/userSettingPages/accessibility")}>
                 <Text style={styles.buttonText}>Accessibility</Text>
                 <Icon name="angle-right" size={24} color="#000" />
             </TouchableOpacity>
             <View style={styles.separator} />
 
-            <TouchableOpacity style={styles.optionContainer} onPress={() => handlePress('Notifications')}>
+            <TouchableOpacity style={styles.optionContainer} onPress={() => router.push("/userSettingPages/notifications")}>
                 <Text style={styles.buttonText}>Notifications</Text>
                 <Icon name="angle-right" size={24} color="#000" />
             </TouchableOpacity>
             <View style={styles.separator} />
 
-            <TouchableOpacity style={styles.optionContainer} onPress={() => handlePress('PrivacySharing')}>
+            <TouchableOpacity style={styles.optionContainer} onPress={() => router.push("/userSettingPages/privacySharing")}>
                 <Text style={styles.buttonText}>Privacy & Sharing</Text>
                 <Icon name="angle-right" size={24} color="#000" />
             </TouchableOpacity>
             <View style={styles.separator} />
 
             <Text style={[styles.heading, { marginTop: 40 }]}>Support</Text>
-            <TouchableOpacity style={styles.optionContainer} onPress={() => handlePress('Feedback')}>
+            <TouchableOpacity style={styles.optionContainer} onPress={() => router.push("")}>
                 <Text style={styles.buttonText}>Feedback</Text>
                 <Icon name="angle-right" size={24} color="#000" />
             </TouchableOpacity>
             <View style={styles.separator} />
 
             <Text style={[styles.heading, { marginTop: 40 }]}>Legal</Text>
-            <TouchableOpacity style={styles.optionContainer} onPress={() => handlePress('TermsOfService')}>
+            <TouchableOpacity style={styles.optionContainer} onPress={() => router.push("")}>
                 <Text style={styles.buttonText}>Terms of Service</Text>
                 <Icon name="angle-right" size={24} color="#000" />
             </TouchableOpacity>
             <View style={styles.separator} />
-            <TouchableOpacity style={styles.optionContainer} onPress={() => handlePress('PrivacyPolicy')}>
+            <TouchableOpacity style={styles.optionContainer} onPress={() => router.push("")}>
                 <Text style={styles.buttonText}>Privacy Policy</Text>
                 <Icon name="angle-right" size={24} color="#000" />
             </TouchableOpacity>
             <View style={styles.separator} />
 
-            <TouchableOpacity style={styles.logoutButton} onPress={() => handlePress('Logout')}>
+            <TouchableOpacity style={styles.logoutButton} onPress={() => router.push("")}>
                 <Text style={styles.logoutButtonText}>Log out</Text>
             </TouchableOpacity>
         </ScrollView>
