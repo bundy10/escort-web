@@ -32,7 +32,9 @@ export default function RootLayout() {
         <Stack initialRouteName="auth/loginPage">
           <Stack.Screen name="auth/loginPage" options={{ headerShown: false }} />
           <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-          <Stack.Screen name="userSettingPages/paymentsPayouts" options={{ headerShown: false }} />
+          <Stack.Screen name="userSettingPages/wallet/wallet" options={{ headerShown: false }} />
+          <Stack.Screen name="userSettingPages/wallet/help" options={{ headerShown: false }} />
+          <Stack.Screen name="userSettingPages/wallet/paymentMethods" options={{ headerShown: false }} />
           <Stack.Screen name="userSettingPages/notifications" options={{ headerShown: false }} />
           <Stack.Screen name="userSettingPages/privacySharing" options={{ headerShown: false }} />
           <Stack.Screen name="userSettingPages/personalInformation" options={{ headerShown: false }} />
