@@ -4,14 +4,14 @@ import { useRouter } from 'expo-router';
 import { styles } from '../styles/authStyles';
 
 export default function SignupPage() {
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
+
     const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
 
     const router = useRouter();
 
     const handleSignup = () => {
-        console.log('Sign Up with:', username, email, password);
+        console.log('Sign Up with:', email, password);
     };
 
     return (
@@ -22,12 +22,6 @@ export default function SignupPage() {
                 placeholder="Email Address"
                 value={email}
                 onChangeText={setEmail}
-            />
-            <TextInput
-                style={styles.input}
-                placeholder="Username"
-                value={username}
-                onChangeText={setUsername}
             />
             <TextInput
                 style={styles.input}
