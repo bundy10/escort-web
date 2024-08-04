@@ -31,6 +31,7 @@ export default function RootLayout() {
       <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
         <Stack initialRouteName="auth/loginPage">
           <Stack.Screen name="auth/loginPage" options={{ headerShown: false }} />
+          <Stack.Screen name="auth/signUpPage" options={{ headerShown: false }} />
           <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
           <Stack.Screen name="userSettingPages/wallet/wallet" options={{ headerShown: false }} />
           <Stack.Screen name="userSettingPages/wallet/help" options={{ headerShown: false }} />
