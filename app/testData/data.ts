@@ -25,8 +25,20 @@ export const dummyListingData = [
     },
     {
         id: 5,
-        image: require('../images/exampleImage.jpg'),
-        title: 'Placeholder Title',
+        image: require('../images/exampleImage2.jpg'),
+        title: 'Dummy Data Test',
+        description: 'Placeholder Description',
+    },
+    {
+        id: 6,
+        image: require('../images/exampleImage2.jpg'),
+        title: 'Search Test',
+        description: 'Placeholder Description',
+    },
+    {
+        id: 7,
+        image: require('../images/exampleImage2.jpg'),
+        title: 'Escort Dummy Data Test',
         description: 'Placeholder Description',
     },
     // Add more items as needed

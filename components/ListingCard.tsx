@@ -1,26 +1,21 @@
 import React from 'react';
-import { View, Text, Image, StyleSheet } from 'react-native';
-import { styles } from './Styles/ListingCard'
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
+import { View, Text, Image } from 'react-native';
+import { styles } from './Styles/ListingCard';
 
-type ListingCardProps = {
-    image: number | string;
+interface ListingCardProps {
+    image: any; // Adjust the type as needed
     title: string;
     description: string;
-};
-const ListingCard = ({ image, title, description }: ListingCardProps) => {
-    const isLocalImage = typeof image === 'number';
+}
 
+export default function ListingCard({ image, title, description }: ListingCardProps) {
     return (
         <View style={styles.card}>
-            <Image source={isLocalImage ? image : { uri: image }} style={styles.image} />
+            <Image source={image} style={styles.image} />
             <View style={styles.detailsContainer}>
-                <ThemedText type="subtitle">{title}</ThemedText>
-                <ThemedText style={styles.description}>{description}</ThemedText>
+                <Text style={styles.title}>{title}</Text>
+                <Text style={styles.description}>{description}</Text>
             </View>
         </View>
     );
-};
-
-export default ListingCard;
+}
