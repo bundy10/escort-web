@@ -74,7 +74,7 @@ export default function LoginPage() {
                 onPress={() => router.push('/auth/signUpPage')}
                 style={styles.toggleButton}
             >
-                <Text>Don't have an account? <Text style={{ color: 'blue' }}>Sign up</Text></Text>
+                <Text>Don't have an account? <Text style={styles.linkText}>Sign up</Text></Text>
             </TouchableOpacity>
         </View>
     );
