@@ -44,4 +44,8 @@ export const styles = StyleSheet.create({
         color: 'red',
         marginBottom: 10,
     },
+    linkText: {
+        color: '#007BFF',
+        textAlign: 'center',
+    },
 });
