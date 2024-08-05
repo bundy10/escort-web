@@ -1,32 +1,29 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
 
 export const styles = StyleSheet.create({
     card: {
-        overflow: 'hidden',
-        borderRadius: 15,
-        borderBottomLeftRadius: 15,
-        borderBottomRightRadius: 15,
         backgroundColor: '#fff',
         marginBottom: 20,
-        width: '70%', // Set the width to 90%
+        width: '100%', // Adjusted width to 90%
         marginLeft: 'auto', // Center the card horizontally
         marginRight: 'auto', // Center the card horizontally
     },
-
     image: {
         width: '100%',
-        height: 250,
-        borderBottomLeftRadius: 15,
-        borderBottomRightRadius: 15,
+        height: 300, // Increased height to 300
+        borderRadius: 15, // Apply border radius to the image
+        resizeMode: 'cover', // Ensure the image covers the entire area
     },
     detailsContainer: {
         padding: 20,
     },
     title: {
-        marginBottom: 7,
-        fontWeight: '500',
+        marginBottom: 10, // Increased margin for better spacing
+        fontSize: 18, // Increased font size
+        fontWeight: 'bold', // Made the title bold
     },
     description: {
         color: '#6e6969',
+        fontSize: 14, // Increased font size for better readability
     },
 });

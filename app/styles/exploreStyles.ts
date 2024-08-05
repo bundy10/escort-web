@@ -1,6 +1,10 @@
 import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: 'white',
+    },
     titleContainer: {
         flexDirection: 'row',
         alignItems: 'center',    
@@ -9,31 +13,21 @@ export const styles = StyleSheet.create({
         marginBottom: 8,
     },
     header: {
-        height: 100,
-        backgroundColor: '#A1CEDC',
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        backgroundColor: 'white',
+        zIndex: 10,
+        padding: 10,
+        borderBottomWidth: 1,
+        borderBottomColor: '#E0E0E0',
     },
     searchContainer: {
         flexDirection: 'row',
-        padding: 10,
-    },
-    searchInput: {
-        padding: 15, 
-        backgroundColor: 'white', 
-        borderRadius: 20, 
-        borderWidth: 1, // border
-        borderColor: '#ddd', // Optional: Sets the border color
-        elevation: 3, // Elevation for Android 
-        shadowColor: '#000', // Shadow color for iOS
-        shadowOffset: { width: 0, height: 2 }, // Shadow offset for iOS
-        shadowOpacity: 0.1, // Shadow opacity for iOS
-        shadowRadius: 2, // Shadow radius for iOS
-        fontSize: 16, 
-        margin: 40,
-        marginTop: 100,
-    },
-    searchButton: {
+        alignItems: 'center',
         flex: 1,
-        borderColor: 'gray',
+        borderColor: 'white',
         borderWidth: 1,
         margin: 30,
         marginTop: 50,
@@ -46,12 +40,18 @@ export const styles = StyleSheet.create({
         shadowOffset: { width: 0, height: 2 }, // Shadow offset for iOS
         shadowOpacity: 0.23, // Shadow opacity for iOS
         shadowRadius: 2.62, // Shadow radius for iOS
-        borderRadius: 25, 
-        
+        borderRadius: 25,
     },
-    searchButtonText: {
+    searchIcon: {
+        position: 'absolute',
+        left: 10,
+        zIndex: 1,
+    },
+    searchInput: {
+        flex: 1,
         fontWeight: 'bold',
-        marginLeft: 10,
+        fontSize: 16,
+        paddingLeft: 30,
     },
     closeSearch: {
         padding: 10,
@@ -96,5 +96,9 @@ export const styles = StyleSheet.create({
         elevation: 5, // for Android
         borderTopWidth: 1, // for the top border
         borderTopColor: '#E0E0E0', // Light grey color for the separator
+    },
+    scrollViewContent: {
+        paddingTop: 200, // Adjust this value to ensure content is not hidden behind the header
+        padding: 20,
     },
 });
