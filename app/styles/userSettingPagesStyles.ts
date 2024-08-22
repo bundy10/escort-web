@@ -5,7 +5,7 @@ export const styles = StyleSheet.create({
         flex: 1,
         padding: 20,
         paddingTop: 40, // Pushes the content down
-        backgroundColor: '#fff',
+        backgroundColor: 'white',
     },
     header: {
         fontSize: 24,
