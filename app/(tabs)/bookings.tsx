@@ -1,28 +1,32 @@
 import React from 'react';
-import { ScrollView, View } from 'react-native';
+import { ScrollView, View, Text, TouchableOpacity } from 'react-native';
+import { useRouter } from 'expo-router';
 
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 import { styles } from '../styles/bookingsStyles';
-import ListingCard from '@/components/ListingCard';
-import { dummyListingData } from  '../testData/data'
 
 export default function BookingsScreen() {
+    const router = useRouter();
 
+    const handleSearch = () => {
+        router.push('explore');
+    };
 
     return (
-        <ScrollView style={{backgroundColor: 'white'}}>
+        <ScrollView style={styles.container}>
             <View style={styles.header}>
                 <ThemedText type="title">Bookings</ThemedText>
             </View>
-            {dummyListingData.map((item) => (
-                <ListingCard
-                    key={item.id}
-                    image={item.image}
-                    title={item.title}
-                    description={item.description}
-                />
-            ))}
+            <View style={styles.noBookingsContainer}>
+                <ThemedText>No bookings... yet!</ThemedText>
+                <TouchableOpacity style={styles.button} onPress={handleSearch}>
+                    <Text style={styles.buttonText}>Start Searching</Text>
+                </TouchableOpacity>
+    
+                
+
+            </View>
         </ScrollView>
     );
 }
