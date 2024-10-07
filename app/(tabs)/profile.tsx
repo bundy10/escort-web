@@ -69,7 +69,7 @@ export default function ProfileScreen() {
             <View style={styles.separator} />
 
             <Text style={[styles.heading, { marginTop: 40 }]}>Legal</Text>
-            <TouchableOpacity style={styles.optionContainer} onPress={() => router.push("")}>
+            <TouchableOpacity style={styles.optionContainer} onPress={() => router.push("/userSettingPages/tos")}>
                 <Text style={styles.buttonText}>Terms of Service</Text>
                 <Icon name="angle-right" size={24} color="#000" />
             </TouchableOpacity>

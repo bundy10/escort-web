@@ -12,6 +12,9 @@ export const styles = StyleSheet.create({
         fontWeight: 'bold',
         marginBottom: 20,
     },
+    headerContainer: {
+        marginBottom: 20,
+    },
     balanceContainer: {
         flexDirection: 'row',
         justifyContent: 'space-between',
@@ -48,5 +51,19 @@ export const styles = StyleSheet.create({
     },
     cashText: {
         color: '#fff',
+    },
+    contentContainer: {
+        paddingBottom: 20,
+    },
+    sectionTitle: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        marginTop: 20,
+        marginBottom: 10,
+    },
+    paragraph: {
+        fontSize: 16,
+        lineHeight: 24,
+        marginBottom: 10,
     },
 });

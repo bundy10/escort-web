@@ -44,6 +44,7 @@ export default function RootLayout() {
           <Stack.Screen name="userSettingPages/personalInformation" options={{ headerShown: false }} />
           <Stack.Screen name="userSettingPages/loginSecurity" options={{ headerShown: false }} />
           <Stack.Screen name="userSettingPages/accessibility" options={{ headerShown: false }} />
+          <Stack.Screen name="userSettingPages/tos" options={{ headerShown: false }} />
         </Stack>
       </ThemeProvider>
   );
