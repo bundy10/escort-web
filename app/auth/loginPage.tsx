@@ -4,10 +4,12 @@ import { useRouter } from 'expo-router';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { styles } from '../styles/authStyles';
+import axios from "axios";
 
 const validationSchema = Yup.object().shape({
-    email: Yup.string()
-        .required("Email is required").email().label("Email"),
+    username: Yup.string()
+        .required("Username is required")
+        .label("Username"),
     password: Yup.string()
         .required("Password is required")
         .min(6, "Password must have at least 6 characters")
@@ -15,41 +17,53 @@ const validationSchema = Yup.object().shape({
 });
 
 export default function LoginPage() {
-
     const router = useRouter();
+    const [error, setError] = useState('');
 
-    // const handleLogin = () => {          will change this to use handleSubmit from Formik
-    //     router.push('/(tabs)/explore');
-    // };
+    const handleLogin = async (values: { username: string; password: string }) => {
+        const data = {
+            userName: values.username,
+            password: values.password
+        };
+
+        try {
+            const response = await axios.post('http://localhost:8085/api/User', data);
+            if (response.data.success) {
+                router.push('/(tabs)/explore');
+            } else {
+                setError('Invalid credentials');
+            }
+        } catch (err) {
+            setError('Invalid credentials');
+        }
+    };
 
     return (
         <View style={styles.container}>
             <Text style={styles.title}>Login</Text>
-            {/* Formik config */}
             <Formik
-                initialValues={{ email: "", password: "" }}
-                onSubmit={(values) => console.log(values)}
+                initialValues={{ username: "", password: "" }}
+                onSubmit={handleLogin}
                 validationSchema={validationSchema}
             >
                 {({
-                    handleChange,
-                    handleSubmit,
-                    handleBlur,
-                    values,
-                    errors,
-                    touched, }) => (
+                      handleChange,
+                      handleSubmit,
+                      handleBlur,
+                      values,
+                      errors,
+                      touched,
+                  }) => (
                     <View style={styles.formContainer}>
                         <TextInput
                             style={styles.input}
-                            placeholder='Email'
-                            onChangeText={handleChange('email')}
-                            onBlur={handleBlur('email')}
-                            value={values.email}
-                            keyboardType='email-address'
+                            placeholder='Username'
+                            onChangeText={handleChange('username')}
+                            onBlur={handleBlur('username')}
+                            value={values.username}
                         />
-                        {/** Display error message */}
-                        {errors.email && touched.email && (
-                            <Text style={styles.errorText}>{errors.email}</Text>
+                        {errors.username && touched.username && (
+                            <Text style={styles.errorText}>{errors.username}</Text>
                         )}
                         <TextInput
                             style={styles.input}
@@ -59,17 +73,16 @@ export default function LoginPage() {
                             onBlur={handleBlur('password')}
                             value={values.password}
                         />
-                        {/** Display error message */}
                         {errors.password && touched.password && (
                             <Text style={styles.errorText}>{errors.password}</Text>
                         )}
-                        <TouchableOpacity style={styles.button} onPress={() => router.push('/(tabs)/explore')}>
+                        {error && <Text style={styles.errorText}>{error}</Text>}
+                        <TouchableOpacity style={styles.button} onPress={() => handleSubmit()}>
                             <Text style={styles.buttonText}>Log In</Text>
                         </TouchableOpacity>
                     </View>
                 )}
             </Formik>
-            {/* End of Formik config */}
             <TouchableOpacity
                 onPress={() => router.push('/auth/signUpPage')}
                 style={styles.toggleButton}
