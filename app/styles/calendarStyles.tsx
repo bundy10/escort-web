@@ -22,4 +22,11 @@ export const styles = StyleSheet.create({
         textAlign: 'center',
         marginTop: 20,
     },
+    input: {
+        height: 40,
+        borderColor: 'gray',
+        borderWidth: 1,
+        marginBottom: 12,
+        paddingHorizontal: 8,
+    },
 });
