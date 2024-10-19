@@ -4,7 +4,21 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import { styles } from '../styles/exploreStyles';
 import ListingCard from '@/components/ListingCard';
 import { dummyListingData } from '../testData/data';
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
+
+
+const getUserId = async () => {
+    try {
+        const userId = await AsyncStorage.getItem('userId');
+        if (userId !== null) {
+            // Use the userId for API requests or other logic
+            console.log('User ID:', userId);
+        }
+    } catch (error) {
+        console.error('Failed to retrieve userId:', error);
+    }
+};
 export default function ExploreScreen() {
     interface Card {
         id: number;
@@ -34,6 +48,7 @@ export default function ExploreScreen() {
         setSelectedCard(card);
     };
     const closeCardDetail = () => setSelectedCard(null);
+    getUserId();
 
     return (
         <View style={styles.container}>

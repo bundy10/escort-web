@@ -5,6 +5,7 @@ import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { styles } from '../styles/authStyles';
 import axios from "axios";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const validationSchema = Yup.object().shape({
     username: Yup.string()
@@ -27,8 +28,9 @@ export default function LoginPage() {
         };
 
         try {
-            const response = await axios.post('http://localhost:8085/api/User', data);
-            if (response.data.success) {
+            const response = await axios.post('http://localhost:8080/api/User/authenticate/login', data);
+            if (typeof response.data === 'number') {
+                await AsyncStorage.setItem('userId', response.data.toString());
                 router.push('/(tabs)/explore');
             } else {
                 setError('Invalid credentials');
@@ -92,3 +94,12 @@ export default function LoginPage() {
         </View>
     );
 }
+
+/**const handleLogout = async () => {      to clear userId from async storage
+    try {
+        await AsyncStorage.removeItem('userId');
+        router.push('/auth/loginPage');
+    } catch (error) {
+        console.error('Failed to clear userId:', error);
+    }
+}; */
