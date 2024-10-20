@@ -28,7 +28,7 @@ export default function LoginPage() {
         };
 
         try {
-            const response = await axios.post('http://localhost:8080/api/User/authenticate/login', data);
+            const response = await axios.post('http://localhost:8080/api/User/authenticate/login', data); // TODO: Update URL to the specific endpoint running the backend
             if (typeof response.data === 'number') {
                 await AsyncStorage.setItem('userId', response.data.toString());
                 router.push('/(tabs)/explore');
