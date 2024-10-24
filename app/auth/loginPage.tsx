@@ -87,9 +87,10 @@ export default function LoginPage() {
             </Formik>
             <TouchableOpacity
                 onPress={() => router.push('/auth/signUpPage')}
-                style={styles.toggleButton}
-            >
-                <Text>Don't have an account? <Text style={styles.linkText}>Sign up</Text></Text>
+                style={styles.toggleButton}>
+                <Text>
+                    Don't have an account? <Text style={styles.linkText}>Sign up</Text>
+                </Text>
             </TouchableOpacity>
         </View>
     );
