@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import { View, Text, TextInput, TouchableOpacity } from 'react-native';
 import { useRouter } from 'expo-router';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { styles } from '../styles/authStyles';
-import axios from "axios";
+import { handleLogin } from '../axios/calls';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const validationSchema = Yup.object().shape({
@@ -21,17 +21,21 @@ export default function LoginPage() {
     const router = useRouter();
     const [error, setError] = useState('');
 
-    const handleLogin = async (values: { username: string; password: string }) => {
-        const data = {
-            userName: values.username,
-            password: values.password
+    useEffect(() => {
+        const checkSignUpSuccess = async () => {
+            const signUpSuccess = await AsyncStorage.getItem('signUpSuccess');
+            console.log(signUpSuccess);
+            if (signUpSuccess === 'true') {
+                await AsyncStorage.removeItem('signUpSuccess');
+            }
         };
+        checkSignUpSuccess();
+    }, []);
 
+    const authenticateLogin = async (values: { username: string; password: string }) => {
         try {
-            const response = await axios.post('http://localhost:8080/api/User/authenticate/login', data);
-            if (typeof response.data === 'number') {
-                await AsyncStorage.setItem('userId', response.data.toString());
-                router.push('/(tabs)/explore');
+            const success = await handleLogin(values);
+            if (success) {
             } else {
                 setError('Invalid credentials');
             }
@@ -45,7 +49,7 @@ export default function LoginPage() {
             <Text style={styles.title}>Login</Text>
             <Formik
                 initialValues={{ username: "", password: "" }}
-                onSubmit={handleLogin}
+                onSubmit={authenticateLogin}
                 validationSchema={validationSchema}
             >
                 {({
