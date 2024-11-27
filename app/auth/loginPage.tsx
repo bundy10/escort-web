@@ -29,7 +29,6 @@ export default function LoginPage() {
                 await AsyncStorage.removeItem('signUpSuccess');
             }
         };
-        checkSignUpSuccess();
     }, []);
 
     const authenticateLogin = async (values: { username: string; password: string }) => {
