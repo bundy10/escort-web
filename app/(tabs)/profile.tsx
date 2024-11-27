@@ -3,6 +3,20 @@ import { ScrollView, View, Text, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { useRouter } from 'expo-router';
 import { styles } from '../styles/profileStyles';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
+interface Router {
+    push: (path: string) => void;
+}
+
+const handleLogout = async (router: Router) => {
+    try {
+        await AsyncStorage.removeItem('userId');
+        router.push('/auth/loginPage');
+    } catch (error) {
+        console.error('Failed to clear userId:', error);
+    }
+};
 
 export default function ProfileScreen() {
     const router = useRouter();
@@ -80,10 +94,11 @@ export default function ProfileScreen() {
             </TouchableOpacity>
             <View style={styles.separator} />
 
-            <TouchableOpacity style={styles.logoutButton} onPress={() => router.push("")}>
+            <TouchableOpacity style={styles.logoutButton} onPress={() => handleLogout(router)}>
                 <Text style={styles.logoutButtonText}>Log out</Text>
             </TouchableOpacity>
         </ScrollView>
+
     );
 }
 

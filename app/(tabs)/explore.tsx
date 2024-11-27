@@ -5,6 +5,7 @@ import { styles } from '../styles/exploreStyles';
 import ListingCard from '@/components/ListingCard';
 import { dummyListingData } from '../testData/data';
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import ProtectedRoute from '@/components/ProtectedRoute';
 
 
 
@@ -51,54 +52,56 @@ export default function ExploreScreen() {
     getUserId();
 
     return (
-        <View style={styles.container}>
-            <View style={styles.header}>
-                <View style={styles.searchContainer}>
-                    <Icon name="search" size={20} color="#000" style={styles.searchIcon} />
-                    <TextInput
-                        style={styles.searchInput}
-                        placeholder="Search..."
-                        value={searchText}
-                        onChangeText={setSearchText}
-                    />
-                </View>
-            </View>
-            <ScrollView contentContainerStyle={styles.scrollViewContent}>
-                {filteredData.map((item) => (
-                    <TouchableOpacity key={item.id} onPress={() => openCardDetail(item)}>
-                        <ListingCard
-                            image={item.image}
-                            title={item.title}
-                            description={item.description}
+        <ProtectedRoute>
+            <View style={styles.container}>
+                <View style={styles.header}>
+                    <View style={styles.searchContainer}>
+                        <Icon name="search" size={20} color="#000" style={styles.searchIcon} />
+                        <TextInput
+                            style={styles.searchInput}
+                            placeholder="Search..."
+                            value={searchText}
+                            onChangeText={setSearchText}
                         />
-                    </TouchableOpacity>
-                ))}
-                <Modal
-                    animationType="slide"
-                    transparent={false}
-                    visible={!!selectedCard}
-                    onRequestClose={closeCardDetail}>
-                    <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
-                        <TouchableOpacity onPress={closeCardDetail} style={{ position: 'absolute', top: 10, left: 10, zIndex: 1 }}>
-                            <View style={styles.closeSearch}>
-                                <Icon name="arrow-left" size={24} color="#000" />
-                            </View>
-                        </TouchableOpacity>
-                        {selectedCard && (
-                            <Image
-                                source={selectedCard.image} // im directly using the image object 
-                                style={styles.cardImage}
+                    </View>
+                </View>
+                <ScrollView contentContainerStyle={styles.scrollViewContent}>
+                    {filteredData.map((item) => (
+                        <TouchableOpacity key={item.id} onPress={() => openCardDetail(item)}>
+                            <ListingCard
+                                image={item.image}
+                                title={item.title}
+                                description={item.description}
                             />
-                        )}
-                        {selectedCard && (
-                            <View style={styles.floatBar}>
-                                <Text>$0.00 Total</Text>
-                                <Button title="Like" onPress={() => {}} />
-                            </View>
-                        )}
-                    </ScrollView>
-                </Modal>
-            </ScrollView>
-        </View>
+                        </TouchableOpacity>
+                    ))}
+                    <Modal
+                        animationType="slide"
+                        transparent={false}
+                        visible={!!selectedCard}
+                        onRequestClose={closeCardDetail}>
+                        <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
+                            <TouchableOpacity onPress={closeCardDetail} style={{ position: 'absolute', top: 10, left: 10, zIndex: 1 }}>
+                                <View style={styles.closeSearch}>
+                                    <Icon name="arrow-left" size={24} color="#000" />
+                                </View>
+                            </TouchableOpacity>
+                            {selectedCard && (
+                                <Image
+                                    source={selectedCard.image} // im directly using the image object
+                                    style={styles.cardImage}
+                                />
+                            )}
+                            {selectedCard && (
+                                <View style={styles.floatBar}>
+                                    <Text>$0.00 Total</Text>
+                                    <Button title="Like" onPress={() => { }} />
+                                </View>
+                            )}
+                        </ScrollView>
+                    </Modal>
+                </ScrollView>
+            </View>
+        </ProtectedRoute>
     );
 }
