@@ -49,3 +49,30 @@ export const handleSignUp = async (values: { firstname: string; lastname: string
         return false;
     }
 };
+
+export const getBookingsById = async (values: { firstname: string; lastname: string; username: string; email: string; password: string; phoneNumber: string }): Promise<boolean> => {
+    const data = {
+        firstName: values.firstname,
+        lastName: values.lastname,
+        userName: values.username,
+        password: values.password,
+        userContactDetails: {
+            email: values.email,
+            phoneNumber: values.phoneNumber
+        }
+    };
+    console.log('Sending data to endpoint:', data);
+    try {
+        const response = await axios.post('http://localhost:8080/api/User', data);
+        if (response.status === 201) {
+            await AsyncStorage.setItem('signUpSuccess', 'true');
+            router.push('/(tabs)/login');
+            return true;
+        } else {
+            return false;
+        }
+    } catch (error) {
+        console.error('Error hitting endpoint:', error);
+        return false;
+    }
+};
