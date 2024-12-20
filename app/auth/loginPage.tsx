@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import { View, Text, TextInput, TouchableOpacity } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, Image} from 'react-native';
 import { useRouter } from 'expo-router';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
@@ -45,7 +45,8 @@ export default function LoginPage() {
 
     return (
         <View style={styles.container}>
-            <Text style={styles.title}>Login</Text>
+            <Image source={require('../../assets/images/logo.png')} style={styles.logo} />
+
             <Formik
                 initialValues={{ username: "", password: "" }}
                 onSubmit={authenticateLogin}

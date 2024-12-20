@@ -5,12 +5,13 @@ export const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#f5f5f5',
+        backgroundColor: '#ffffff',
         padding: 20,
     },
     title: {
-        fontSize: 24,
+        fontSize: 29,
         marginBottom: 20,
+        fontStyle: 'italic',
     },
     formContainer: {
         width: '100%', 
@@ -35,6 +36,11 @@ export const styles = StyleSheet.create({
     buttonText: {
         color: '#ffffff',
         fontSize: 16,
+    },
+    logo: {
+        width: 100,
+        height: 120,
+        marginBottom: 190,
     },
     toggleButton: {
         marginTop: 20,
