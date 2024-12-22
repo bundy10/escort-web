@@ -33,6 +33,8 @@ export const styles = StyleSheet.create({
         alignItems: 'center',
         borderRadius: 5,
     },
+
+
     buttonText: {
         color: '#ffffff',
         fontSize: 16,
