@@ -1,34 +1,23 @@
-import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 import React from 'react';
 import 'react-native-reanimated';
-import { useColorScheme } from '@/hooks/useColorScheme';
-import { ActivityIndicator, View } from 'react-native';
+import {NavigationContainer} from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-
 import WelcomeScreen from "@/app/auth/welcomePage";
+import LoginScreen from "@/app/auth/loginPage";
+import SignupScreen from "@/app/auth/signUpPage";
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
 const Stack = createNativeStackNavigator();
 
 export default function RootLayout() {
-  const colorScheme = useColorScheme();
-  const [loaded] = useFonts({
-    SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
-  });
-
-  if (!loaded) {
-    return (
-        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-          <ActivityIndicator size="large" />
-        </View>
-    );
-  }
 
   return (
       <Stack.Navigator initialRouteName="auth/welcomePage">
         <Stack.Screen name="auth/welcomePage" component={WelcomeScreen} options={{ headerShown: false }}  />
+          <Stack.Screen name="auth/loginPage" component={LoginScreen} options={{ headerShown: false }}  />
+          <Stack.Screen name="auth/signupPage" component={SignupScreen} options={{ headerShown: false }}  />
       </Stack.Navigator>
   );
 }
