@@ -43,3 +43,5 @@ export const dummyListingData = [
     },
     // Add more items as needed
 ];
+
+export default dummyListingData;

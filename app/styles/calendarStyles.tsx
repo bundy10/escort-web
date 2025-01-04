@@ -30,3 +30,5 @@ export const styles = StyleSheet.create({
         paddingHorizontal: 8,
     },
 });
+
+export default styles;
