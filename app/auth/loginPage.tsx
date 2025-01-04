@@ -45,7 +45,7 @@ export default function LoginPage() {
 
     return (
         <View style={styles.container}>
-            <Image source={require('../../assets/images/logo.png')} style={styles.logo} />
+            
 
             <Formik
                 initialValues={{ username: "", password: "" }}
