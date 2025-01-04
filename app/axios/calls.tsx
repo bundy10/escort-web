@@ -1,7 +1,6 @@
 import axios from "axios";
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import {router} from "expo-router";
-
+import { router } from "expo-router";
 
 export const handleLogin = async (values: { username: string; password: string }): Promise<boolean> => {
     const data = {
@@ -21,7 +20,6 @@ export const handleLogin = async (values: { username: string; password: string }
         return false;
     }
 };
-
 
 export const handleSignUp = async (values: { firstname: string; lastname: string; username: string; email: string; password: string; phoneNumber: string }): Promise<boolean> => {
     const data = {
@@ -75,4 +73,10 @@ export const getBookingsById = async (values: { firstname: string; lastname: str
         console.error('Error hitting endpoint:', error);
         return false;
     }
+};
+
+export default {
+    handleLogin,
+    handleSignUp,
+    getBookingsById
 };
