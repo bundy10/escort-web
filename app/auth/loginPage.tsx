@@ -6,6 +6,8 @@ import * as Yup from 'yup';
 import { styles } from '../styles/authStyles';
 import { handleLogin } from '../axios/calls';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import {NavigationProp, useNavigation} from "@react-navigation/core";
+import {RootStackParamList} from "@/types/types";
 
 const validationSchema = Yup.object().shape({
     username: Yup.string()
@@ -20,6 +22,7 @@ const validationSchema = Yup.object().shape({
 export default function LoginPage() {
     const router = useRouter();
     const [error, setError] = useState('');
+    const navigation = useNavigation<NavigationProp<RootStackParamList>>();
 
     useEffect(() => {
         const checkSignUpSuccess = async () => {
@@ -32,9 +35,11 @@ export default function LoginPage() {
     }, []);
 
     const authenticateLogin = async (values: { username: string; password: string }) => {
+
         try {
             const success = await handleLogin(values);
             if (success) {
+                navigation.navigate('tabs');
             } else {
                 setError('Invalid credentials');
             }
