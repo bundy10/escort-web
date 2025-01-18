@@ -1,10 +1,6 @@
 import React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
-import RootLayout from './app/_layout';
+import { Stack } from 'expo-router';
 
-console.log('App.tsx rendered');
 export default function App() {
-    return (
-            <RootLayout />
-    );
+    return <Stack />;
 }

@@ -39,7 +39,7 @@ export default function LoginPage() {
         try {
             const success = await handleLogin(values);
             if (success) {
-                navigation.navigate('tabs');
+                navigation.navigate('(tabs)');
             } else {
                 setError('Invalid credentials');
             }
