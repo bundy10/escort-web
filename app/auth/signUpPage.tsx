@@ -19,7 +19,6 @@ const validationSchema = Yup.object().shape({
 export default function SignUpPage() {
     const router = useRouter();
     const [error, setError] = useState('');
-
     const authenticateSignUp = async (values: { firstname: string; lastname: string; username: string; email: string; password: string; confirmPassword: string; phoneNumber: string }) => {
         if (values.password !== values.confirmPassword) {
             setError('Passwords do not match');

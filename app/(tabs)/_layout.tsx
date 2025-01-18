@@ -3,63 +3,46 @@ import React from 'react';
 
 import { TabBarIcon } from '@/components/navigation/TabBarIcon';
 import { Colors } from '@/constants/Colors';
+import TabBar from '@/components/navigation/TabBar';
 import { useColorScheme } from '@/hooks/useColorScheme';
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
 
-  return (
-    <Tabs
-      screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-        headerShown: false,
-      }}>
-
-      <Tabs.Screen
-        name="explore"
-        options={{
-          title: 'Explore',
-          tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'flame' : 'flame-outline'} color={color} />
-          ),
-        }}
-      />
-      <Tabs.Screen
-        name="bookings"
-        options={{
-          title: 'Bookings',
-          tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'wine' : 'wine-outline'} color={color} />
-          ),
-        }}
-      />
-      <Tabs.Screen
-        name="calendar"
-        options={{
-            title: 'Calendar',
-            tabBarIcon: ({ color, focused }) => (
-                <TabBarIcon name={focused ? 'calendar' : 'calendar-outline'} color={color} />
-            ),
-        }}
-      />
-       <Tabs.Screen
-            name="inbox"
-            options={{
-                title: 'Inbox',
-                tabBarIcon: ({ color, focused }) => (
-                    <TabBarIcon name={focused ? 'mail' : 'mail-outline'} color={color} />
-                ),
-            }}
-       />
-        <Tabs.Screen
-            name="profile"
-            options={{
-                title: 'Profile',
-                tabBarIcon: ({ color, focused }) => (
-                    <TabBarIcon name={focused ? 'people' : 'people-outline'} color={color} />
-                ),
-            }}
-        />
-    </Tabs>
-  );
+    return (
+        <Tabs
+            tabBar={props=> <TabBar {...props} />}
+        >
+            <Tabs.Screen
+                name="explore"
+                options={{
+                    title: "explore"
+                }}
+            />
+            <Tabs.Screen
+                name="bookings"
+                options={{
+                    title: "bookings"
+                }}
+            />
+            <Tabs.Screen
+                name="calendar"
+                options={{
+                    title: "calendar"
+                }}
+            />
+            <Tabs.Screen
+                name="inbox"
+                options={{
+                    title: "inbox"
+                }}
+            />
+            <Tabs.Screen
+                name="profile"
+                options={{
+                    title: "profile"
+                }}
+            />
+        </Tabs>
+    )
 }
