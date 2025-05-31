@@ -4,7 +4,7 @@ import { useRouter } from 'expo-router';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { styles } from '../styles/authStyles';
-import { handleLogin } from '../axios/calls';
+import { handleLogin } from '../../api/userApi';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const validationSchema = Yup.object().shape({

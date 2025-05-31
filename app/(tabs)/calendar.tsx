@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, Button, TextInput } from 'react-native';
 import { Calendar } from 'react-native-calendars';
 import { styles } from '../styles/calendarStyles';
-import axiosInstance from '../services/axiosInstance';
+import {userService} from '../../services/axiosInstance';
 
 export default function CalendarScreen() {
     const [selectedDate, setSelectedDate] = useState('');
@@ -21,7 +21,7 @@ export default function CalendarScreen() {
     };
 
     const handleGetRequest = () => {
-        axiosInstance.get('/User')
+        userService.get('/User')
             .then(response => {
                 setApiResponse(JSON.stringify(response.data, null, 2));
             })
@@ -46,7 +46,7 @@ export default function CalendarScreen() {
                 abn: abn
             }
         };
-        axiosInstance.post('/User', data)
+        userService.post('/User', data)
             .then(response => {
                 console.log('POST Request success', response.data);
                 setApiResponse(JSON.stringify(response.data, null, 2));

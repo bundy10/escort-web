@@ -4,7 +4,7 @@ import { useRouter } from 'expo-router';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { styles } from '../styles/authStyles';
-import { handleSignUp } from '../axios/calls';
+import { handleSignUp } from '../../api/userApi';
 
 const validationSchema = Yup.object().shape({
     firstname: Yup.string().required('First name is required'),
