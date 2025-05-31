@@ -6,6 +6,7 @@ import ListingCard from '@/components/ListingCard';
 import { dummyListingData } from '../testData/data';
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import ProtectedRoute from '@/components/ProtectedRoute';
+import { getListingById } from '@/api/listingApi';
 
 
 
@@ -32,7 +33,18 @@ export default function ExploreScreen() {
     const [searchText, setSearchText] = useState('');
     const [selectedCard, setSelectedCard] = useState<Card | null>(null);
     const [filteredData, setFilteredData] = useState(dummyListingData);
+    const [listingId, setListingId] = useState('');
 
+    // test
+    const getListing = async () => {
+        try {
+            const data = await getListingById(listingId);
+            console.log('Listing data:', data);
+        } catch (error) {
+            console.error('Error fetching listing:', error);
+        }
+    };
+    // test
     useEffect(() => {
         if (searchText === '') {
             setFilteredData(dummyListingData);
@@ -54,6 +66,19 @@ export default function ExploreScreen() {
 
     return (
         <ProtectedRoute>
+            {/* test */}
+            <View>
+                <TextInput style={{
+                    height: 40,
+                    borderColor: 'gray',
+                    borderWidth: 1,
+                    paddingHorizontal: 10,
+                    marginVertical: 10,
+                    backgroundColor: 'white'}} 
+                    value={listingId} onChangeText={setListingId} placeholder='put the listing ID in here, then check console'/>
+                <Button title="Get Listing By Id" onPress={getListing} />
+            </View>
+            {/* above is testing the data */}
             <View style={styles.container}>
                 <View style={styles.header}>
                     <View style={styles.searchContainer}>
