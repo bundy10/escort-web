@@ -1,6 +1,6 @@
-import axios from "axios";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { router } from "expo-router";
+import axiosInstance from "../services/axiosInstance";
 
 export const handleLogin = async (values: { username: string; password: string }): Promise<boolean> => {
     const data = {
@@ -8,7 +8,7 @@ export const handleLogin = async (values: { username: string; password: string }
         password: values.password
     };
     try {
-        const response = await axios.post('http://localhost:8080/api/User/authenticate/login', data);
+        const response = await axiosInstance.post('/User/authenticate/login', data);
         if (typeof response.data === 'number') {
             await AsyncStorage.setItem('userId', response.data.toString());
             router.push('/(tabs)/explore');
@@ -34,7 +34,7 @@ export const handleSignUp = async (values: { firstname: string; lastname: string
     };
     console.log('Sending data to endpoint:', data);
     try {
-        const response = await axios.post('http://localhost:8080/api/User', data);
+        const response = await axiosInstance.post('/User', data);
         if (response.status === 201) {
             await AsyncStorage.setItem('signUpSuccess', 'true');
             router.push('/(tabs)/login');
@@ -61,7 +61,7 @@ export const getBookingsById = async (values: { firstname: string; lastname: str
     };
     console.log('Sending data to endpoint:', data);
     try {
-        const response = await axios.post('http://localhost:8080/api/User', data);
+        const response = await axiosInstance.post('/User', data);
         if (response.status === 201) {
             await AsyncStorage.setItem('signUpSuccess', 'true');
             router.push('/(tabs)/login');
